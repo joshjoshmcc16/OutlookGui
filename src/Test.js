@@ -95,22 +95,25 @@ export default function Test() {
       .attr("fill", "white");
 
     // Animation function
-    function animate() {
-      circles
-        .transition()
-        .duration(1000)
-        .attr("r", d => {
-          const emailCount = emailData.filter(email => email.Category === d.category).length;
-          return emailCount > 0 ? 50 + emailCount * 2 : 50;
-        })
-        .transition()
-        .duration(1000)
-        .attr("r", d => {
-          const emailCount = emailData.filter(email => email.Category === d.category).length;
-          return emailCount > 0 ? 50 + emailCount * 2 + 10 : 50 + 10;
-        })
-        .on("end", animate);
-    }
+function animate() {
+  circles
+    .transition()
+    .duration(1000)
+    .attr("r", d => {
+      const emailCount = emailData.filter(email => email.Category === d.category).length;
+      const circleRadius = emailCount > 35 ? 50 + 35 * 2 : 50 + emailCount * 2;
+      return circleRadius;
+    })
+    .transition()
+    .duration(1000)
+    .attr("r", d => {
+      const emailCount = emailData.filter(email => email.Category === d.category).length;
+      const circleRadius = emailCount > 35 ? 50 + 35 * 2 + 10 : 50 + emailCount * 2 + 10;
+      return circleRadius;
+    })
+    .on("end", animate);
+}
+
 
 
 
