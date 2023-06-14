@@ -1,0 +1,52 @@
+[
+    {
+      "Subject": "Welcome to our Newsletter",
+      "From": "Jane Smith <jane@example.com>",
+      "Received": "2023-06-12T10:15:00",
+      "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
+      "Category": "New"
+    },
+    {
+      "Subject": "Introduction to the Team",
+      "From": "Michael Johnson <michael@example.com>",
+      "Received": "2023-06-11T14:30:00",
+      "Body": "I'd like to introduce you to our team members. They are a talented group!",
+      "Category": "People"
+    },
+    {
+      "Subject": "Urgent: System Failure",
+      "From": "IT Support <support@example.com>",
+      "Received": "2023-06-10T08:45:00",
+      "Body": "We are experiencing a critical system failure. Please take immediate action.",
+      "Category": "Severity"
+    },
+    {
+      "Subject": "Maintenance Notice",
+      "From": "Operations Team <operations@example.com>",
+      "Received": "2023-06-09T16:00:00",
+      "Body": "We will be performing routine maintenance tonight. Minimal impact is expected.",
+      "Category": "Less Severity"
+    },
+    {
+      "Subject": "Action Required: Review Proposal",
+      "From": "Emily Brown <emily@example.com>",
+      "Received": "2023-06-08T13:45:00",
+      "Body": "Please review the attached proposal and provide your feedback by the end of the week.",
+      "Category": "Flagged"
+    },
+    {
+        "Subject": "Action Required: Review Proposal",
+        "From": "Emily Brown <emily@example.com>",
+        "Received": "2023-06-08T13:45:00",
+        "Body": "Please review the attached proposal and provide your feedback by the end of the week.",
+        "Category": "Deleted"
+      },
+      {
+        "Subject": "Action Required: Review Proposal",
+        "From": "Emily Brown <emily@example.com>",
+        "Received": "2023-06-08T13:45:00",
+        "Body": "Please review the attached proposal and provide your feedback by the end of the week.",
+        "Category": "Sent"
+      }
+  ]
+  
