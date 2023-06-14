@@ -13,7 +13,7 @@ export default function Test() {
       { category: "Severity", color: "steelblue" },
       { category: "Less Severity", color: "steelblue" },
       { category: "Flagged", color: "steelblue" }
-      
+
     ];
 
     // Set the dimensions of the SVG container
@@ -98,13 +98,22 @@ export default function Test() {
     function animate() {
       circles
         .transition()
-        .duration(1000) // how long it takes to animate the circle growing
-        .attr("r", 49) // this will make the circle shrink
+        .duration(1000)
+        .attr("r", d => {
+          const emailCount = emailData.filter(email => email.Category === d.category).length;
+          return emailCount > 0 ? 50 + emailCount * 2 : 50;
+        })
         .transition()
         .duration(1000)
-        .attr("r", 59) // this will make the circle grow
+        .attr("r", d => {
+          const emailCount = emailData.filter(email => email.Category === d.category).length;
+          return emailCount > 0 ? 50 + emailCount * 2 + 10 : 50 + 10;
+        })
         .on("end", animate);
     }
+
+
+
 
     // Start the animation
     animate();
