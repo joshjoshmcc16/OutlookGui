@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
 import emailData from "./emailData.json";
+import anime from "animejs";
 
 export default function Test() {
   const circleContainerRef = useRef(null);
@@ -14,7 +15,8 @@ export default function Test() {
       { category: "People", color: "steelblue" },
       { category: "Severity", color: "steelblue" },
       { category: "Less Severity", color: "steelblue" },
-      { category: "Flagged", color: "steelblue" }
+      { category: "Flagged", color: "steelblue" },
+      { category: "Explode", color: "steelblue" }
     ];
 
     // Set the dimensions of the SVG container
@@ -64,7 +66,7 @@ export default function Test() {
       .on("click", function (event, d) {
         const clickedCircle = d3.select(this);
 
-        if (selectedCircle === clickedCircle) {
+        if (selectedCircle === clickedCircle.node()) {
           clickedCircle.attr("stroke", "none");
           setSelectedCircle(null);
           setSelectedEmails([]);
@@ -78,8 +80,20 @@ export default function Test() {
 
           const selectedEmailsData = emailData.filter(email => email.Category === d.category);
           setSelectedEmails(selectedEmailsData);
+
+          anime({
+            targets: this,
+            scale: 2,
+            opacity: 0,
+            duration: 1000,
+            easing: "easeOutExpo",
+            complete: function (anim) {
+              clickedCircle.style.display = "none";
+            }
+          });
         }
       });
+
 
     // Create a shadow filter definition
     const shadowFilter = svg
