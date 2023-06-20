@@ -1,9 +1,11 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
 import emailData from "./emailData.json";
 
 export default function Test() {
   const circleContainerRef = useRef(null);
+  const [selectedCircle, setSelectedCircle] = useState(null);
+  const [selectedEmails, setSelectedEmails] = useState([]);
 
   useEffect(() => {
     // Define the circle data
@@ -13,7 +15,6 @@ export default function Test() {
       { category: "Severity", color: "steelblue" },
       { category: "Less Severity", color: "steelblue" },
       { category: "Flagged", color: "steelblue" }
-
     ];
 
     // Set the dimensions of the SVG container
@@ -59,6 +60,25 @@ export default function Test() {
       .on("mouseout", function (event, d) {
         d3.select(this).attr("fill", d.color);
         svg.selectAll("text.number").remove();
+      })
+      .on("click", function (event, d) {
+        const clickedCircle = d3.select(this);
+
+        if (selectedCircle === clickedCircle) {
+          clickedCircle.attr("stroke", "none");
+          setSelectedCircle(null);
+          setSelectedEmails([]);
+        } else {
+          if (selectedCircle) {
+            selectedCircle.attr("stroke", "none");
+          }
+
+          clickedCircle.attr("stroke", "black").attr("stroke-width", "2px");
+          setSelectedCircle(clickedCircle.node());
+
+          const selectedEmailsData = emailData.filter(email => email.Category === d.category);
+          setSelectedEmails(selectedEmailsData);
+        }
       });
 
     // Create a shadow filter definition
@@ -95,28 +115,24 @@ export default function Test() {
       .attr("fill", "white");
 
     // Animation function
-function animate() {
-  circles
-    .transition()
-    .duration(1000)
-    .attr("r", d => {
-      const emailCount = emailData.filter(email => email.Category === d.category).length;
-      const circleRadius = emailCount > 35 ? 50 + 35 * 2 : 50 + emailCount * 2;
-      return circleRadius;
-    })
-    .transition()
-    .duration(1000)
-    .attr("r", d => {
-      const emailCount = emailData.filter(email => email.Category === d.category).length;
-      const circleRadius = emailCount > 35 ? 50 + 35 * 2 + 10 : 50 + emailCount * 2 + 10;
-      return circleRadius;
-    })
-    .on("end", animate);
-}
-
-
-
-
+    function animate() {
+      circles
+        .transition()
+        .duration(1000)
+        .attr("r", d => {
+          const emailCount = emailData.filter(email => email.Category === d.category).length;
+          const circleRadius = emailCount > 35 ? 50 + 35 * 2 : 50 + emailCount * 2;
+          return circleRadius;
+        })
+        .transition()
+        .duration(1000)
+        .attr("r", d => {
+          const emailCount = emailData.filter(email => email.Category === d.category).length;
+          const circleRadius = emailCount > 35 ? 50 + 35 * 2 + 10 : 50 + emailCount * 2 + 10;
+          return circleRadius;
+        })
+        .on("end", animate);
+    }
 
     // Start the animation
     animate();
@@ -141,17 +157,22 @@ function animate() {
     padding: "20px",
   };
 
-  // Get the first sender from the email data
-  const firstSender = emailData.length > 0 ? emailData[0].From : "";
-  const secondSender = emailData.length > 1 ? emailData[1].From : "";
-
-
   return (
     <div style={containerStyle}>
       <h1 style={titleStyle}>Outlook Emails</h1>
       <div id="circle-container" ref={circleContainerRef}></div>
-      <p>Emails: {firstSender}</p>
-      <p>Emails: {secondSender}</p>
+      {selectedEmails.length > 0 && (
+        <div>
+          <h2>Emails:</h2>
+          <ul>
+            {selectedEmails.map((email, index) => (
+              <li key={index}>
+                <strong>From:</strong> {email.From}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 }
