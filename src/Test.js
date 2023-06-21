@@ -47,23 +47,51 @@ export default function Test() {
       .style("filter", "url(#circle-shadow)")
       .on("mouseover", function (event, d) {
         d3.select(this).attr("fill", "yellow");
-        const cx = d3.select(this).attr("cx");
-        const cy = d3.select(this).attr("cy");
+        const circleRadius = d3.select(this).attr("r");
+        const circleCenterX = parseFloat(d3.select(this).attr("cx"));
+        const circleCenterY = parseFloat(d3.select(this).attr("cy"));
         const emailCount = emailData.filter(email => email.Category === d.category).length;
-        svg
+        const g = svg
+          .append("g")
+          .attr("class", "hover-group")
+          .attr("transform", `translate(${circleCenterX}, ${circleCenterY})`); // Position the group relative to the circle
+
+        const textX = 0; // Adjust the x position as desired
+        const textY = 6; // Adjust the y position as desired
+
+        g
           .append("text")
           .attr("class", "number")
-          .attr("x", cx)
-          .attr("y", cy)
-          .attr("text-anchor", "middle")
-          .attr("dominant-baseline", "central")
+          .attr("x", textX)
+          .attr("y", textY)
           .text(emailCount)
-          .attr("fill", "black");
+          .attr("fill", "black")
+          .style("text-anchor", "middle")
+          .style("dominant-baseline", "central");
+
+        g
+          .append("text")
+          .attr("class", "close")
+          .attr("x", parseInt(circleRadius) + textX) // Adjust the x position as desired
+          .attr("y", -parseInt(circleRadius) + textY) // Adjust the y position as desired
+          .text("X")
+          .attr("fill", "red")
+          .style("cursor", "pointer")
+          .style("text-anchor", "middle")
+          .style("dominant-baseline", "central")
+          .on("click", function () {
+            // Remove the selected circle and associated elements
+            const clickedCircle = d3.select(this.parentNode.parentNode).datum();
+            const updatedEmails = selectedEmails.filter(email => email.Category !== clickedCircle.category);
+            setSelectedEmails(updatedEmails);
+          });
       })
+
       .on("mouseout", function (event, d) {
         d3.select(this).attr("fill", d.color);
-        svg.selectAll("text.number").remove();
+        svg.selectAll("g.hover-group").remove();
       })
+
       .on("click", function (event, d) {
         const clickedCircle = d3.select(this);
 
@@ -162,7 +190,7 @@ export default function Test() {
       svg.remove();
     };
   }, []);
-  
+
 
   useEffect(() => {
     if (scrollToTop) {
