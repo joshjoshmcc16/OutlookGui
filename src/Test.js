@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 import React, { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
 import emailData from "./emailData.json";
@@ -11,11 +13,11 @@ export default function Test() {
   useEffect(() => {
     // Define the circle data
     const circleData = [
-      { category: "New", color: "red" },
-      { category: "People", color: "steelblue" },
-      { category: "Severity", color: "steelblue" },
-      { category: "Less Severity", color: "steelblue" },
-      { category: "Flagged", color: "steelblue" }
+      { category: "New", color: "#FF6363" },
+      { category: "People", color: "#63C3FF" },
+      { category: "Severity", color: "#FFA663" },
+      { category: "Less Severity", color: "#FFD663" },
+      { category: "Flagged", color: "#63FFA1" }
     ];
 
     // Set the dimensions of the SVG container
@@ -40,7 +42,7 @@ export default function Test() {
       .append("circle")
       .attr("cx", (d, i) => horizontalSpacing * (i + 1))
       .attr("cy", (d, i) => (i % 2 === 0 ? height / 3 : (height / 3) * 2))
-      .attr("r", 100)
+      .attr("r", 50) // Adjust the circle radius as desired
       .attr("fill", d => d.color)
       .style("filter", "url(#circle-shadow)")
       .on("mouseover", function (event, d) {
@@ -101,7 +103,7 @@ export default function Test() {
       .attr("flood-color", "#000")
       .attr("flood-opacity", 0.5);
 
-    // Add category names to the circles
+    // Add category names and trash can icons to the circles
     svg
       .selectAll(".category")
       .data(circleData)
@@ -114,6 +116,23 @@ export default function Test() {
       .attr("dominant-baseline", "central")
       .text(d => d.category)
       .attr("fill", "white");
+
+    svg
+      .selectAll(".trash-icon")
+      .data(circleData)
+      .enter()
+      .append("foreignObject")
+      .attr("class", "trash-icon")
+      .attr("x", (d, i) => horizontalSpacing * (i + 1) - 15)
+      .attr("y", (d, i) => (i % 2 === 0 ? height / 3 : (height / 3) * 2) + 40)
+      .attr("width", 30)
+      .attr("height", 30)
+      .html('<i class="fa fa-trash"></i>')
+      .on("click", function (event, d) {
+        const category = d.category;
+        const updatedEmails = selectedEmails.filter(email => email.Category !== category);
+        setSelectedEmails(updatedEmails);
+      });
 
     // Animation function
     function animate() {
@@ -143,6 +162,7 @@ export default function Test() {
       svg.remove();
     };
   }, []);
+  
 
   useEffect(() => {
     if (scrollToTop) {
@@ -159,7 +179,7 @@ export default function Test() {
   }, [selectedEmails]);
 
   const containerStyle = {
-    backgroundColor: "#f0f0f0",
+    backgroundColor: "white",
     width: "100%",
     height: "100vh",
   };
@@ -168,7 +188,15 @@ export default function Test() {
     textAlign: "center",
     fontSize: "24px",
     padding: "20px",
+    fontFamily: "'PT Serif', sans-serif", // Replace 'Roboto' with the actual font name from Google Fonts
   };
+
+  useEffect(() => {
+    const link = document.createElement("link");
+    link.href = "https://fonts.googleapis.com/css2?family=Roboto&display=swap"; // Replace with the Google Fonts URL for your selected font
+    link.rel = "stylesheet";
+    document.head.appendChild(link);
+  }, []);
 
   return (
     <div style={containerStyle}>
