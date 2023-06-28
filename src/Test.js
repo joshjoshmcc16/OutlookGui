@@ -44,71 +44,82 @@ export default function Test() {
       .attr("cy", (d, i) => (i % 2 === 0 ? height / 3 : (height / 3) * 2))
       .attr("r", 50) // Adjust the circle radius as desired
       .attr("fill", d => d.color)
-      .style("filter", "url(#circle-shadow)")
-      .on("mouseover", function (event, d) {
-        d3.select(this).attr("fill", "yellow");
-        const circleRadius = d3.select(this).attr("r");
-        const circleCenterX = parseFloat(d3.select(this).attr("cx"));
-        const circleCenterY = parseFloat(d3.select(this).attr("cy"));
-        const emailCount = emailData.filter(email => email.Category === d.category).length;
-        const g = svg
-          .append("g")
-          .attr("class", "hover-group")
-          .attr("transform", `translate(${circleCenterX}, ${circleCenterY})`); // Position the group relative to the circle
+      .style("filter", "url(#circle-shadow)");
 
-        const textX = 0; // Adjust the x position as desired
-        const textY = 6; // Adjust the y position as desired
+    //Handling Mouse Over Event and Creating Hover Information
+    function handleMouseOver(event, d) {
+      d3.select(this).attr("fill", "yellow");
+      const circleRadius = d3.select(this).attr("r");
+      const circleCenterX = parseFloat(d3.select(this).attr("cx"));
+      const circleCenterY = parseFloat(d3.select(this).attr("cy"));
+      const emailCount = emailData.filter(email => email.Category === d.category).length;
+      const g = svg
+        .append("g")
+        .attr("class", "hover-group")
+        .attr("transform", `translate(${circleCenterX}, ${circleCenterY})`); // Position the group relative to the circle
 
-        g
-          .append("text")
-          .attr("class", "number")
-          .attr("x", textX)
-          .attr("y", textY)
-          .text(emailCount)
-          .attr("fill", "black")
-          .style("text-anchor", "middle")
-          .style("dominant-baseline", "central");
+      const textX = 0; // Adjust the x position as desired
+      const textY = 6; // Adjust the y position as desired
 
-        g
-          .append("text")
-          .attr("class", "close")
-          .attr("x", parseInt(circleRadius) + textX) // Adjust the x position as desired
-          .attr("y", -parseInt(circleRadius) + textY) // Adjust the y position as desired
-          .text("X")
-          .attr("fill", "red")
-          .style("cursor", "pointer")
-          .style("text-anchor", "middle")
-          .style("dominant-baseline", "central")
-          .on("click", function () {
-            // Remove the selected circle and associated elements
-            const clickedCircle = d3.select(this.parentNode.parentNode).datum();
-            const updatedEmails = selectedEmails.filter(email => email.Category !== clickedCircle.category);
-            setSelectedEmails(updatedEmails);
-          });
-      })
-      .on("mouseout", function (event, d) {
-        d3.select(this).attr("fill", d.color);
-        svg.selectAll("g.hover-group").remove();
-      })
-      .on("click", function (event, d) {
-        const clickedCircle = d3.select(this);
+      g
+        .append("text")
+        .attr("class", "number")
+        .attr("x", textX)
+        .attr("y", textY)
+        .text(emailCount)
+        .attr("fill", "black")
+        .style("text-anchor", "middle")
+        .style("dominant-baseline", "central");
 
-        if (selectedCircle.node() === clickedCircle.node()) {
-          clickedCircle.attr("stroke", "none");
-          setSelectedCircle(d3.select(null));
-          setSelectedEmails([]);
-        } else {
-          if (selectedCircle.node()) {
-            selectedCircle.attr("stroke", "none");
-          }
+      g
+        .append("text")
+        .attr("class", "close")
+        .attr("x", parseInt(circleRadius) + textX) // Adjust the x position as desired
+        .attr("y", -parseInt(circleRadius) + textY) // Adjust the y position as desired
+        .text("X")
+        .attr("fill", "red")
+        .style("cursor", "pointer")
+        .style("text-anchor", "middle")
+        .style("dominant-baseline", "central")
+        .on("click", function () {
+          // Remove the selected circle and associated elements
+          const clickedCircle = d3.select(this.parentNode.parentNode).datum();
+          const updatedEmails = selectedEmails.filter(email => email.Category !== clickedCircle.category);
+          setSelectedEmails(updatedEmails);
+        });
+    }
 
-          clickedCircle.attr("stroke", "black").attr("stroke-width", "2px");
-          setSelectedCircle(clickedCircle);
+    //Handling Mouse Out Event and Removing Hover Information
+    function handleMouseOut(event, d) {
+      d3.select(this).attr("fill", d.color);
+      svg.selectAll("g.hover-group").remove();
+    }
 
-          const selectedEmailsData = emailData.filter(email => email.Category === d.category);
-          setSelectedEmails(selectedEmailsData);
+    //Handling Click Event and Selecting Circles
+    function handleClick(event, d) {
+      const clickedCircle = d3.select(this);
+
+      if (selectedCircle.node() === clickedCircle.node()) {
+        clickedCircle.attr("stroke", "none");
+        setSelectedCircle(d3.select(null));
+        setSelectedEmails([]);
+      } else {
+        if (selectedCircle.node()) {
+          selectedCircle.attr("stroke", "none");
         }
-      });
+
+        clickedCircle.attr("stroke", "black").attr("stroke-width", "2px");
+        setSelectedCircle(clickedCircle);
+
+        const selectedEmailsData = emailData.filter(email => email.Category === d.category);
+        setSelectedEmails(selectedEmailsData);
+      }
+    }
+
+    // Event Binding for Circle Interactions
+    circles.on("mouseover", handleMouseOver)
+      .on("mouseout", handleMouseOut)
+      .on("click", handleClick);
 
     // Create a shadow filter definition
     const shadowFilter = svg
@@ -129,7 +140,7 @@ export default function Test() {
       .attr("flood-color", "#000")
       .attr("flood-opacity", 0.5);
 
-    // Add category names and trash can icons to the circles
+    // Add category names to the circles
     svg
       .selectAll(".category")
       .data(circleData)
@@ -142,23 +153,6 @@ export default function Test() {
       .attr("dominant-baseline", "central")
       .text(d => d.category)
       .attr("fill", "white");
-
-    svg
-      .selectAll(".trash-icon")
-      .data(circleData)
-      .enter()
-      .append("foreignObject")
-      .attr("class", "trash-icon")
-      .attr("x", (d, i) => horizontalSpacing * (i + 1) - 15)
-      .attr("y", (d, i) => (i % 2 === 0 ? height / 3 : (height / 3) * 2) + 40)
-      .attr("width", 30)
-      .attr("height", 30)
-      .html('<i class="fa fa-trash"></i>')
-      .on("click", function (event, d) {
-        const category = d.category;
-        const updatedEmails = selectedEmails.filter(email => email.Category !== category);
-        setSelectedEmails(updatedEmails);
-      });
 
     // Animation function
     function animate() {
