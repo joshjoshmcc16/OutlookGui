@@ -1,10 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-
 import React, { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
 import emailData from "./emailData.json";
 import { easeBounceOut } from "d3-ease";
-
 
 export default function Test() {
   const circleContainerRef = useRef(null);
@@ -19,7 +17,7 @@ export default function Test() {
       { category: "People", color: "#63C3FF" },
       { category: "Severity", color: "#FFA663" },
       { category: "Less Severity", color: "#FFD663" },
-      { category: "Flagged", color: "#63FFA1" }
+      { category: "Flagged", color: "#63FFA1" },
     ];
 
     // Set the dimensions of the SVG container
@@ -45,7 +43,7 @@ export default function Test() {
       .attr("cx", (d, i) => horizontalSpacing * (i + 1))
       .attr("cy", (d, i) => (i % 2 === 0 ? height / 3 : (height / 3) * 2))
       .attr("r", 50) // Adjust the circle radius as desired
-      .attr("fill", d => d.color)
+      .attr("fill", (d) => d.color)
       .style("filter", "url(#circle-shadow)");
 
     //Handling Mouse Over Event and Creating Hover Information
@@ -54,17 +52,21 @@ export default function Test() {
       const circleRadius = d3.select(this).attr("r");
       const circleCenterX = parseFloat(d3.select(this).attr("cx"));
       const circleCenterY = parseFloat(d3.select(this).attr("cy"));
-      const emailCount = emailData.filter(email => email.Category === d.category).length;
+      const emailCount = emailData.filter(
+        (email) => email.Category === d.category
+      ).length;
       const g = svg
         .append("g")
         .attr("class", "hover-group")
-        .attr("transform", `translate(${circleCenterX}, ${circleCenterY})`); // Position the group relative to the circle
+        .attr(
+          "transform",
+          `translate(${circleCenterX}, ${circleCenterY})`
+        ); // Position the group relative to the circle
 
       const textX = 0; // Adjust the x position as desired
       const textY = 6; // Adjust the y position as desired
 
-      g
-        .append("text")
+      g.append("text")
         .attr("class", "number")
         .attr("x", textX)
         .attr("y", textY)
@@ -73,8 +75,7 @@ export default function Test() {
         .style("text-anchor", "middle")
         .style("dominant-baseline", "central");
 
-      g
-        .append("text")
+      g.append("text")
         .attr("class", "close")
         .attr("x", parseInt(circleRadius) + textX) // Adjust the x position as desired
         .attr("y", -parseInt(circleRadius) + textY) // Adjust the y position as desired
@@ -86,7 +87,9 @@ export default function Test() {
         .on("click", function () {
           // Remove the selected circle and associated elements
           const clickedCircle = d3.select(this.parentNode.parentNode).datum();
-          const updatedEmails = selectedEmails.filter(email => email.Category !== clickedCircle.category);
+          const updatedEmails = selectedEmails.filter(
+            (email) => email.Category !== clickedCircle.category
+          );
           setSelectedEmails(updatedEmails);
         });
     }
@@ -94,7 +97,7 @@ export default function Test() {
     //Handling Mouse Out Event and Removing Hover Information
     function handleMouseOut(event, d) {
       d3.select(this).attr("fill", d.color);
-      svg.selectAll("g.hover-group").remove();
+      svg.selectAll("g.hover-group").transition().duration(245).remove();
     }
 
     //Handling Click Event and Selecting Circles
@@ -113,13 +116,16 @@ export default function Test() {
         clickedCircle.attr("stroke", "black").attr("stroke-width", "2px");
         setSelectedCircle(clickedCircle);
 
-        const selectedEmailsData = emailData.filter(email => email.Category === d.category);
+        const selectedEmailsData = emailData.filter(
+          (email) => email.Category === d.category
+        );
         setSelectedEmails(selectedEmailsData);
       }
     }
 
     // Event Binding for Circle Interactions
-    circles.on("mouseover", handleMouseOver)
+    circles
+      .on("mouseover", handleMouseOver)
       .on("mouseout", handleMouseOut)
       .on("click", handleClick);
 
@@ -153,40 +159,49 @@ export default function Test() {
       .attr("y", (d, i) => (i % 2 === 0 ? height / 3 : (height / 3) * 2))
       .attr("text-anchor", "middle")
       .attr("dominant-baseline", "central")
-      .text(d => d.category)
+      .text((d) => d.category)
       .attr("fill", "white");
 
-      function animate() {
-        circles
-          .attr("r", 0)
-          .transition()
-          .duration(1000)
-          .delay((d, i) => i * 200)
-          .attr("r", 50)
-          .style("opacity", 0)
-          .style("transform", "scale(0)")
-          .transition()
-          .duration(1000)
-          .style("opacity", 1)
-          .style("transform", "scale(1)")
-          .ease(easeBounceOut)
-          .transition()
-          .duration(1000)
-          .attr("r", d => {
-            const emailCount = emailData.filter(email => email.Category === d.category).length;
-            const circleRadius = emailCount > 35 ? 50 + 35 * 2 : 50 + emailCount * 2;
-            return circleRadius;
-          })
-          .transition()
-          .duration(1000)
-          .attr("r", d => {
-            const emailCount = emailData.filter(email => email.Category === d.category).length;
-            const circleRadius = emailCount > 35 ? 50 + 35 * 2 + 10 : 50 + emailCount * 2 + 10;
-            return circleRadius;
-          })
-          .ease(easeBounceOut)
-          .on("end", animate);
-      }
+    function animate() {
+      circles
+        .attr("r", 0)
+        .transition()
+        .duration(1000)
+        .delay((d, i) => i * 200)
+        .attr("r", 50)
+        .style("opacity", 0)
+        .style("transform", "scale(0)")
+        .transition()
+        .duration(1000)
+        .style("opacity", 1)
+        .style("transform", "scale(1)")
+        .ease(easeBounceOut)
+        .transition()
+        .duration(1000)
+        .delay((d, i) => i * 200)
+        .attr("r", (d) => {
+          const emailCount = emailData.filter(
+            (email) => email.Category === d.category
+          ).length;
+          const circleRadius = emailCount > 35 ? 50 + 35 * 2 : 50 + emailCount * 2;
+          return circleRadius;
+        })
+        .transition()
+        .duration(1000)
+        .attr("r", (d) => {
+          const emailCount = emailData.filter(
+            (email) => email.Category === d.category
+          ).length;
+          const circleRadius = emailCount > 35 ? 50 + 35 * 2 + 10 : 50 + emailCount * 2 + 10;
+          return circleRadius;
+        })
+        .ease(easeBounceOut)
+        .on("end", function () {
+          // Do not restart the animation
+          // Remove the end event listener to prevent unnecessary restarts
+          d3.select(this).on("end", null);
+        });
+    }
 
     // Start the animation
     animate();
