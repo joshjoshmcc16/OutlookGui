@@ -337,7 +337,7 @@ function handleMouseOver(event, d) {
           width: "100%",
           height: "100%",
           zIndex: -1,
-          background: `linear-gradient(135deg, #0099ff, #ff33cc, #ff6633, #00ff00, #ff0000)`,
+          background: `linear-gradient(135deg, #E6F3FF, #B3E0FF, #80C7FF, #4DADFF, #1A94FF)`,
           backgroundSize: "400% 400%",
           animation: "gradientShift 15s ease infinite, colorPulse 2s alternate-reverse infinite",
         }}

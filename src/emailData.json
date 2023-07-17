@@ -1,704 +1,353 @@
 [
-  {
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "New"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "Flagged"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "Flagged"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "Flagged"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "Flagged"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "Flagged"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "Flagged"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "Flagged"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "Flagged"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "Flagged"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "Flagged"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "Flagged"
-},
-{
-    "Subject": "Welcome to our Newsletter",
-    "From": "Jane Smith <jane@example.com>",
-    "Received": "2023-06-12T10:15:00",
-    "Body": "Thank you for subscribing to our newsletter. Stay tuned for exciting updates!",
-    "Category": "Flagged"
-}
+    {
+        "Subject": "Welcome to our Newsletter 1",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 1.",
+        "Category": "People"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 2",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 2.",
+        "Category": "People"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 3",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 3.",
+        "Category": "People"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 4",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 4.",
+        "Category": "Flagged"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 5",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 5.",
+        "Category": "New"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 6",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 6.",
+        "Category": "New"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 7",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 7.",
+        "Category": "People"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 8",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 8.",
+        "Category": "New"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 9",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 9.",
+        "Category": "New"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 10",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 10.",
+        "Category": "New"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 11",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 11.",
+        "Category": "Flagged"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 12",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 12.",
+        "Category": "People"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 13",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 13.",
+        "Category": "New"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 14",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 14.",
+        "Category": "Flagged"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 15",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 15.",
+        "Category": "People"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 16",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 16.",
+        "Category": "Flagged"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 17",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 17.",
+        "Category": "Flagged"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 18",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 18.",
+        "Category": "New"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 19",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 19.",
+        "Category": "People"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 20",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 20.",
+        "Category": "Flagged"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 21",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 21.",
+        "Category": "Flagged"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 22",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 22.",
+        "Category": "Flagged"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 23",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 23.",
+        "Category": "People"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 24",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 24.",
+        "Category": "New"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 25",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 25.",
+        "Category": "People"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 26",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 26.",
+        "Category": "New"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 27",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 27.",
+        "Category": "People"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 28",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 28.",
+        "Category": "Flagged"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 29",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 29.",
+        "Category": "People"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 30",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 30.",
+        "Category": "New"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 31",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 31.",
+        "Category": "Flagged"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 32",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 32.",
+        "Category": "Flagged"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 33",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 33.",
+        "Category": "People"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 34",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 34.",
+        "Category": "People"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 35",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 35.",
+        "Category": "Flagged"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 36",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 36.",
+        "Category": "New"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 37",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 37.",
+        "Category": "Flagged"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 38",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 38.",
+        "Category": "New"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 39",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 39.",
+        "Category": "Flagged"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 40",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 40.",
+        "Category": "Flagged"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 41",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 41.",
+        "Category": "New"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 42",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 42.",
+        "Category": "New"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 43",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 43.",
+        "Category": "New"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 44",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 44.",
+        "Category": "Flagged"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 45",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 45.",
+        "Category": "People"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 46",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 46.",
+        "Category": "People"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 47",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 47.",
+        "Category": "New"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 48",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 48.",
+        "Category": "Flagged"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 49",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 49.",
+        "Category": "New"
+    },
+    {
+        "Subject": "Welcome to our Newsletter 50",
+        "From": "Jane Smith <jane@example.com>",
+        "Received": "2023-06-12T10:15:00",
+        "Body": "Thank you for subscribing to our newsletter 50.",
+        "Category": "Flagged"
+    }
 
-  ]
-  
+]
