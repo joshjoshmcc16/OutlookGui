@@ -3,15 +3,16 @@ import React, { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
 import emailData from "./emailData.json";
 import { easeBounceOut } from "d3-ease";
+import ps3MenuMusic from "./ps3MenuMusic.mp3";
 
 export default function Test() {
   const circleContainerRef = useRef(null);
   const [selectedCircle, setSelectedCircle] = useState(d3.select(null));
   const [selectedEmails, setSelectedEmails] = useState([]);
   const [scrollToTop, setScrollToTop] = useState(false);
+  const [audioPlayed, setAudioPlayed] = useState(false);
 
   useEffect(() => {
-    // Define the circle data
     const circleData = [
       { category: "New", color: "#FF6363" },
       { category: "People", color: "#63C3FF" },
@@ -20,14 +21,9 @@ export default function Test() {
       { category: "Flagged", color: "#63FFA1" },
     ];
 
-    // Set the dimensions of the SVG container
-    const width = 1000;
-    const height = 800;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
 
-    // Calculate the desired spacing between circles based on the available width and height
-    const horizontalSpacing = width / (circleData.length + 1);
-
-    // Create the SVG container within the circle-container div
     const svg = d3
       .select(circleContainerRef.current)
       .append("svg")
@@ -40,36 +36,27 @@ export default function Test() {
       .data(circleData)
       .enter()
       .append("circle")
-      .attr("cx", (d, i) => horizontalSpacing * (i + 1))
-      .attr("cy", (d, i) => (i % 2 === 0 ? height / 3 : (height / 3) * 2))
+      .attr("cx", (d, i) => (i + 1) * (width / (circleData.length + 1)))
+      .attr("cy", (height / 2))
       .attr("r", 50) // Adjust the circle radius as desired
       .attr("fill", (d) => d.color)
       .style("filter", "url(#circle-shadow)");
 
-    //Handling Mouse Over Event and Creating Hover Information
+    // Event handlers for circle interactions
     function handleMouseOver(event, d) {
       d3.select(this).attr("fill", "yellow");
-      const circleRadius = d3.select(this).attr("r");
-      const circleCenterX = parseFloat(d3.select(this).attr("cx"));
-      const circleCenterY = parseFloat(d3.select(this).attr("cy"));
-      const emailCount = emailData.filter(
-        (email) => email.Category === d.category
-      ).length;
+      const circleCenterX = d3.select(this).attr("cx");
+      const circleCenterY = d3.select(this).attr("cy");
+      const emailCount = emailData.filter((email) => email.Category === d.category).length;
       const g = svg
         .append("g")
         .attr("class", "hover-group")
-        .attr(
-          "transform",
-          `translate(${circleCenterX}, ${circleCenterY})`
-        ); // Position the group relative to the circle
-
-      const textX = 0; // Adjust the x position as desired
-      const textY = 6; // Adjust the y position as desired
+        .attr("transform", `translate(${circleCenterX}, ${circleCenterY})`);
 
       g.append("text")
         .attr("class", "number")
-        .attr("x", textX)
-        .attr("y", textY)
+        .attr("x", 0)
+        .attr("y", 6)
         .text(emailCount)
         .attr("fill", "black")
         .style("text-anchor", "middle")
@@ -77,30 +64,25 @@ export default function Test() {
 
       g.append("text")
         .attr("class", "close")
-        .attr("x", parseInt(circleRadius) + textX) // Adjust the x position as desired
-        .attr("y", -parseInt(circleRadius) + textY) // Adjust the y position as desired
+        .attr("x", 50)
+        .attr("y", -50)
         .text("X")
         .attr("fill", "red")
         .style("cursor", "pointer")
         .style("text-anchor", "middle")
         .style("dominant-baseline", "central")
         .on("click", function () {
-          // Remove the selected circle and associated elements
           const clickedCircle = d3.select(this.parentNode.parentNode).datum();
-          const updatedEmails = selectedEmails.filter(
-            (email) => email.Category !== clickedCircle.category
-          );
+          const updatedEmails = selectedEmails.filter((email) => email.Category !== clickedCircle.category);
           setSelectedEmails(updatedEmails);
         });
     }
 
-    //Handling Mouse Out Event and Removing Hover Information
     function handleMouseOut(event, d) {
       d3.select(this).attr("fill", d.color);
       svg.selectAll("g.hover-group").transition().duration(245).remove();
     }
 
-    //Handling Click Event and Selecting Circles
     function handleClick(event, d) {
       const clickedCircle = d3.select(this);
 
@@ -116,10 +98,16 @@ export default function Test() {
         clickedCircle.attr("stroke", "black").attr("stroke-width", "2px");
         setSelectedCircle(clickedCircle);
 
-        const selectedEmailsData = emailData.filter(
-          (email) => email.Category === d.category
-        );
+        const selectedEmailsData = emailData.filter((email) => email.Category === d.category);
         setSelectedEmails(selectedEmailsData);
+
+        // Turn on background music when a circle is clicked
+        if (!audioPlayed) {
+          const audio = new Audio(ps3MenuMusic);
+          audio.loop = true;
+          audio.play();
+          setAudioPlayed(true);
+        }
       }
     }
 
@@ -155,38 +143,37 @@ export default function Test() {
       .enter()
       .append("text")
       .attr("class", "category")
-      .attr("x", (d, i) => horizontalSpacing * (i + 1))
-      .attr("y", (d, i) => (i % 2 === 0 ? height / 3 : (height / 3) * 2))
+      .attr("x", (d, i) => (i + 1) * (width / (circleData.length + 1)))
+      .attr("y", height / 2)
       .attr("text-anchor", "middle")
       .attr("dominant-baseline", "central")
       .text((d) => d.category)
       .attr("fill", "white");
 
-      function throbbingAnimation() {
-        circles.each(function (d) {
-          const emailCount = emailData.filter((email) => email.Category === d.category).length;
-          const circleRadius = emailCount > 35 ? 50 + 35 * 2 : 50 + emailCount * 2;
-      
-          if (emailCount > 0) {
-            d3.select(this)
-              .transition()
-              .duration(1000)
-              .attr("r", circleRadius)
-              .transition()
-              .duration(1000)
-              .attr("r", circleRadius + 10)
-              .ease(easeBounceOut)
-              .on("end", function () {
-                if (emailData.filter((email) => email.Category === d.category).length > 0) {
-                  throbbingAnimation.call(this);
-                } else {
-                  // Circle has email count of 0, stop throbbing by setting radius to 50 directly
-                  d3.select(this).attr("r", 50);
-                }
-              });
-          }
-        });
-      }
+    function throbbingAnimation() {
+      circles.each(function (d) {
+        const emailCount = emailData.filter((email) => email.Category === d.category).length;
+        const circleRadius = emailCount > 35 ? 50 + 35 * 2 : 50 + emailCount * 2;
+
+        if (emailCount > 0) {
+          d3.select(this)
+            .transition()
+            .duration(1000)
+            .attr("r", circleRadius)
+            .transition()
+            .duration(1000)
+            .attr("r", circleRadius + 10)
+            .ease(easeBounceOut)
+            .on("end", function () {
+              if (emailData.filter((email) => email.Category === d.category).length > 0) {
+                throbbingAnimation.call(this);
+              } else {
+                d3.select(this).attr("r", 50);
+              }
+            });
+        }
+      });
+    }
 
     function animate() {
       circles
@@ -206,18 +193,14 @@ export default function Test() {
         .duration(1000)
         .delay((d, i) => i * 200)
         .attr("r", (d) => {
-          const emailCount = emailData.filter(
-            (email) => email.Category === d.category
-          ).length;
+          const emailCount = emailData.filter((email) => email.Category === d.category).length;
           const circleRadius = emailCount > 35 ? 50 + 35 * 2 : 50 + emailCount * 2;
           return circleRadius;
         })
         .transition()
         .duration(1000)
         .attr("r", (d) => {
-          const emailCount = emailData.filter(
-            (email) => email.Category === d.category
-          ).length;
+          const emailCount = emailData.filter((email) => email.Category === d.category).length;
           const circleRadius = emailCount > 35 ? 50 + 35 * 2 + 10 : 50 + emailCount * 2 + 10;
           return circleRadius;
         })
@@ -225,11 +208,8 @@ export default function Test() {
         .on("end", throbbingAnimation);
     }
 
-
-    // Start the animation
     animate();
 
-    // Clean up the SVG container when the component is unmounted
     return () => {
       svg.remove();
     };
@@ -249,8 +229,45 @@ export default function Test() {
     setScrollToTop(true);
   }, [selectedEmails]);
 
+  useEffect(() => {
+    const link = document.createElement("link");
+    link.href = "https://fonts.googleapis.com/css2?family=Roboto&display=swap";
+    link.rel = "stylesheet";
+    document.head.appendChild(link);
+
+    const style = document.createElement("style");
+    style.type = "text/css";
+    style.innerHTML = `
+      @keyframes gradientShift {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      @keyframes colorPulse {
+        0% {
+          filter: brightness(1.2) contrast(1.2);
+        }
+        100% {
+          filter: brightness(1) contrast(1);
+        }
+      }
+    `;
+    document.head.appendChild(style);
+
+    return () => {
+      document.head.removeChild(link);
+      document.head.removeChild(style);
+    };
+  }, []);
+
   const containerStyle = {
-    backgroundColor: "white",
+    position: "relative",
     width: "100%",
     height: "100vh",
   };
@@ -259,15 +276,8 @@ export default function Test() {
     textAlign: "center",
     fontSize: "24px",
     padding: "20px",
-    fontFamily: "'PT Serif', sans-serif", // Replace 'Roboto' with the actual font name from Google Fonts
+    fontFamily: "'PT Serif', sans-serif",
   };
-
-  useEffect(() => {
-    const link = document.createElement("link");
-    link.href = "https://fonts.googleapis.com/css2?family=Roboto&display=swap"; // Replace with the Google Fonts URL for your selected font
-    link.rel = "stylesheet";
-    document.head.appendChild(link);
-  }, []);
 
   return (
     <div style={containerStyle}>
@@ -293,6 +303,19 @@ export default function Test() {
           Scroll to Top
         </button>
       )}
+      <div
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: -1,
+          background: `linear-gradient(135deg, #0099ff, #ff33cc, #ff6633, #00ff00, #ff0000)`,
+          backgroundSize: "400% 400%",
+          animation: "gradientShift 15s ease infinite, colorPulse 2s alternate-reverse infinite",
+        }}
+      ></div>
     </div>
   );
 }
