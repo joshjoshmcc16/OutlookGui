@@ -11,6 +11,7 @@ export default function Test() {
   const [selectedEmails, setSelectedEmails] = useState([]);
   const [scrollToTop, setScrollToTop] = useState(false);
   const [audioPlayed, setAudioPlayed] = useState(false);
+  const [animationFinished, setAnimationFinished] = useState(false);
 
   useEffect(() => {
     const circleData = [
@@ -40,43 +41,78 @@ export default function Test() {
       .attr("cy", (height / 2))
       .attr("r", 50) // Adjust the circle radius as desired
       .attr("fill", (d) => d.color)
-      .style("filter", "url(#circle-shadow)");
+      .style("filter", "url(#circle-shadow)")
+      .style("opacity", 0)
+      .style("transform", "scale(0)");
+
+    // Create the category names
+    const categoryNames = svg
+      .selectAll(".category")
+      .data(circleData)
+      .enter()
+      .append("text")
+      .attr("class", "category")
+      .attr("x", (d, i) => (i + 1) * (width / (circleData.length + 1)))
+      .attr("y", height / 2)
+      .attr("text-anchor", "middle")
+      .attr("dominant-baseline", "central")
+      .text((d) => d.category)
+      .attr("fill", "white")
+      .style("opacity", 0);
 
     // Event handlers for circle interactions
-    function handleMouseOver(event, d) {
-      d3.select(this).attr("fill", "yellow");
-      const circleCenterX = d3.select(this).attr("cx");
-      const circleCenterY = d3.select(this).attr("cy");
-      const emailCount = emailData.filter((email) => email.Category === d.category).length;
-      const g = svg
-        .append("g")
-        .attr("class", "hover-group")
-        .attr("transform", `translate(${circleCenterX}, ${circleCenterY})`);
+    // Event handlers for circle interactions
+function handleMouseOver(event, d) {
+  d3.select(this).attr("fill", "yellow");
+  const circleRadius = d3.select(this).attr("r");
+  const circleCenterX = parseFloat(d3.select(this).attr("cx"));
+  const circleCenterY = parseFloat(d3.select(this).attr("cy"));
+  const emailCount = emailData.filter(
+    (email) => email.Category === d.category
+  ).length;
+  const g = svg
+    .append("g")
+    .attr("class", "hover-group")
+    .attr(
+      "transform",
+      `translate(${circleCenterX}, ${circleCenterY})`
+    ); // Position the group relative to the circle
 
-      g.append("text")
-        .attr("class", "number")
-        .attr("x", 0)
-        .attr("y", 6)
-        .text(emailCount)
-        .attr("fill", "black")
-        .style("text-anchor", "middle")
-        .style("dominant-baseline", "central");
+  const textX = 0; // Adjust the x position as desired
+  const textY = 6; // Adjust the y position as desired
 
-      g.append("text")
-        .attr("class", "close")
-        .attr("x", 50)
-        .attr("y", -50)
-        .text("X")
-        .attr("fill", "red")
-        .style("cursor", "pointer")
-        .style("text-anchor", "middle")
-        .style("dominant-baseline", "central")
-        .on("click", function () {
-          const clickedCircle = d3.select(this.parentNode.parentNode).datum();
-          const updatedEmails = selectedEmails.filter((email) => email.Category !== clickedCircle.category);
-          setSelectedEmails(updatedEmails);
-        });
-    }
+  g.append("text")
+    .attr("class", "number")
+    .attr("x", textX)
+    .attr("y", textY)
+    .text(emailCount)
+    .attr("fill", "black")
+    .style("text-anchor", "middle")
+    .style("dominant-baseline", "central");
+
+  const xPadding = 15;
+  const xPosition = parseFloat(circleRadius) + textX + xPadding;
+  const yPosition = -parseFloat(circleRadius) + textY - xPadding;
+
+  g.append("text")
+    .attr("class", "close")
+    .attr("x", xPosition)
+    .attr("y", yPosition)
+    .text("X")
+    .attr("fill", "red")
+    .style("cursor", "pointer")
+    .style("text-anchor", "middle")
+    .style("dominant-baseline", "central")
+    .on("click", function () {
+      // Remove the selected circle and associated elements
+      const clickedCircle = d3.select(this.parentNode.parentNode).datum();
+      const updatedEmails = selectedEmails.filter(
+        (email) => email.Category !== clickedCircle.category
+      );
+      setSelectedEmails(updatedEmails);
+    });
+}
+
 
     function handleMouseOut(event, d) {
       d3.select(this).attr("fill", d.color);
@@ -136,20 +172,6 @@ export default function Test() {
       .attr("flood-color", "#000")
       .attr("flood-opacity", 0.5);
 
-    // Add category names to the circles
-    svg
-      .selectAll(".category")
-      .data(circleData)
-      .enter()
-      .append("text")
-      .attr("class", "category")
-      .attr("x", (d, i) => (i + 1) * (width / (circleData.length + 1)))
-      .attr("y", height / 2)
-      .attr("text-anchor", "middle")
-      .attr("dominant-baseline", "central")
-      .text((d) => d.category)
-      .attr("fill", "white");
-
     function throbbingAnimation() {
       circles.each(function (d) {
         const emailCount = emailData.filter((email) => email.Category === d.category).length;
@@ -177,15 +199,9 @@ export default function Test() {
 
     function animate() {
       circles
-        .attr("r", 0)
         .transition()
         .duration(1000)
         .delay((d, i) => i * 200)
-        .attr("r", 50)
-        .style("opacity", 0)
-        .style("transform", "scale(0)")
-        .transition()
-        .duration(1000)
         .style("opacity", 1)
         .style("transform", "scale(1)")
         .ease(easeBounceOut)
@@ -205,7 +221,17 @@ export default function Test() {
           return circleRadius;
         })
         .ease(easeBounceOut)
-        .on("end", throbbingAnimation);
+        .on("end", () => {
+          setAnimationFinished(true);
+          throbbingAnimation();
+        });
+
+      categoryNames
+        .transition()
+        .duration(1000)
+        .delay(1000) // Delay the appearance of category names after the intro animation
+        .style("opacity", 1)
+        .style("transform", "scale(1)");
     }
 
     animate();
@@ -283,7 +309,7 @@ export default function Test() {
     <div style={containerStyle}>
       <h1 style={titleStyle}>Outlook Emails</h1>
       <div id="circle-container" ref={circleContainerRef}></div>
-      {selectedEmails.length > 0 && (
+      {animationFinished && selectedEmails.length > 0 && (
         <div>
           <h2>Emails:</h2>
           <ul>
@@ -295,7 +321,7 @@ export default function Test() {
           </ul>
         </div>
       )}
-      {selectedEmails.length > 0 && (
+      {animationFinished && selectedEmails.length > 0 && (
         <button
           style={{ position: "fixed", bottom: "20px", right: "20px" }}
           onClick={() => setScrollToTop(true)}
