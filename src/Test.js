@@ -305,6 +305,18 @@ function handleMouseOver(event, d) {
     fontFamily: "'PT Serif', sans-serif",
   };
 
+  const ps3BackgroundStyles = {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    zIndex: -1,
+    background: `linear-gradient(135deg, #E6F3FF, #B3E0FF, #80C7FF, #4DADFF, #1A94FF)`,
+    backgroundSize: "400% 400%",
+    animation: "gradientShift 15s ease infinite, colorPulse 2s alternate-reverse infinite",
+  };
+
   return (
     <div style={containerStyle}>
       <h1 style={titleStyle}>Outlook Emails</h1>
@@ -329,19 +341,8 @@ function handleMouseOver(event, d) {
           Scroll to Top
         </button>
       )}
-      <div
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          zIndex: -1,
-          background: `linear-gradient(135deg, #E6F3FF, #B3E0FF, #80C7FF, #4DADFF, #1A94FF)`,
-          backgroundSize: "400% 400%",
-          animation: "gradientShift 15s ease infinite, colorPulse 2s alternate-reverse infinite",
-        }}
-      ></div>
+      <div style={ps3BackgroundStyles}></div>
     </div>
   );
 }
+
