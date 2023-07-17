@@ -162,29 +162,31 @@ export default function Test() {
       .text((d) => d.category)
       .attr("fill", "white");
 
-    function throbbingAnimation() {
-      circles
-        .transition()
-        .duration(1000)
-        .attr("r", (d) => {
-          const emailCount = emailData.filter(
-            (email) => email.Category === d.category
-          ).length;
+      function throbbingAnimation() {
+        circles.each(function (d) {
+          const emailCount = emailData.filter((email) => email.Category === d.category).length;
           const circleRadius = emailCount > 35 ? 50 + 35 * 2 : 50 + emailCount * 2;
-          return circleRadius;
-        })
-        .transition()
-        .duration(1000)
-        .attr("r", (d) => {
-          const emailCount = emailData.filter(
-            (email) => email.Category === d.category
-          ).length;
-          const circleRadius = emailCount > 35 ? 50 + 35 * 2 + 10 : 50 + emailCount * 2 + 10;
-          return circleRadius;
-        })
-        .ease(easeBounceOut)
-        .on("end", throbbingAnimation);
-    }
+      
+          if (emailCount > 0) {
+            d3.select(this)
+              .transition()
+              .duration(1000)
+              .attr("r", circleRadius)
+              .transition()
+              .duration(1000)
+              .attr("r", circleRadius + 10)
+              .ease(easeBounceOut)
+              .on("end", function () {
+                if (emailData.filter((email) => email.Category === d.category).length > 0) {
+                  throbbingAnimation.call(this);
+                } else {
+                  // Circle has email count of 0, stop throbbing by setting radius to 50 directly
+                  d3.select(this).attr("r", 50);
+                }
+              });
+          }
+        });
+      }
 
     function animate() {
       circles
