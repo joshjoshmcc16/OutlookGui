@@ -1,27 +1,27 @@
-import React, { useEffect, useRef } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
+import ps3MenuMusic from "./ps3MenuMusic.mp3"; // Replace "ps3MenuMusic.mp3" with the actual file path
 import emailData from "./emailData.json";
 
 export default function Test() {
   const circleContainerRef = useRef(null);
+  const audioRef = useRef(null);
+  const [audioLoaded, setAudioLoaded] = useState(false);
 
   useEffect(() => {
     // Define the circle data
     const circleData = [
-      { category: "New", color: "red" },
-      { category: "People", color: "steelblue" },
-      { category: "Severity", color: "steelblue" },
-      { category: "Less Severity", color: "steelblue" },
-      { category: "Flagged", color: "steelblue" }
-      
+      { category: "New", color: "black" },
+      { category: "People", color: "black" },
+      { category: "Severity", color: "black" },
+      { category: "Less Severity", color: "black" },
+      { category: "Flagged", color: "black" }
     ];
 
     // Set the dimensions of the SVG container
-    const width = 1000;
-    const height = 800;
-
-    // Calculate the desired spacing between circles based on the available width and height
-    const horizontalSpacing = width / (circleData.length + 1);
+    const width = window.innerWidth;
+    const height = window.innerHeight;
 
     // Create the SVG container within the circle-container div
     const svg = d3
@@ -30,14 +30,17 @@ export default function Test() {
       .attr("width", width)
       .attr("height", height);
 
+    // Variable to store the tooltip element
+    let tooltip = null;
+
     // Create the circles
     const circles = svg
       .selectAll("circle")
       .data(circleData)
       .enter()
       .append("circle")
-      .attr("cx", (d, i) => horizontalSpacing * (i + 1))
-      .attr("cy", (d, i) => (i % 2 === 0 ? height / 3 : (height / 3) * 2))
+      .attr("cx", (d, i) => (i + 1) * (width / (circleData.length + 1)))
+      .attr("cy", (height / 2))
       .attr("r", 100)
       .attr("fill", d => d.color)
       .style("filter", "url(#circle-shadow)")
@@ -45,21 +48,47 @@ export default function Test() {
         d3.select(this).attr("fill", "yellow");
         const cx = d3.select(this).attr("cx");
         const cy = d3.select(this).attr("cy");
+      
+        // Get the email count for the current category
         const emailCount = emailData.filter(email => email.Category === d.category).length;
-        svg
-          .append("text")
-          .attr("class", "number")
-          .attr("x", cx)
-          .attr("y", cy)
-          .attr("text-anchor", "middle")
-          .attr("dominant-baseline", "central")
-          .text(emailCount)
-          .attr("fill", "black");
+      
+        // If the tooltip doesn't exist, create it
+        if (!tooltip) {
+          tooltip = svg
+            .append("text")
+            .attr("class", "tooltip")
+            .attr("x", cx)
+            .attr("y", cy) // Place it at the center of the circle
+            .attr("text-anchor", "middle")
+            .attr("dominant-baseline", "middle") // Center the text vertically
+            .attr("fill", "black");
+        }
+      
+        // Update the tooltip content with email count only
+        tooltip.text(emailCount);
       })
       .on("mouseout", function (event, d) {
         d3.select(this).attr("fill", d.color);
-        svg.selectAll("text.number").remove();
+      
+        // Remove the tooltip when the mouse moves out of the circle
+        if (tooltip) {
+          tooltip.remove();
+          tooltip = null;
+        }
       });
+      // Add category names to the circles
+svg
+.selectAll(".category")
+.data(circleData)
+.enter()
+.append("text")
+.attr("class", "category")
+.attr("x", (d, i) => (i + 1) * (width / (circleData.length + 1)))
+.attr("y", height / 2)
+.attr("text-anchor", "middle")
+.attr("dominant-baseline", "central")
+.text(d => d.category)
+.attr("fill", "white");
 
     // Create a shadow filter definition
     const shadowFilter = svg
@@ -80,20 +109,6 @@ export default function Test() {
       .attr("flood-color", "#000")
       .attr("flood-opacity", 0.5);
 
-    // Add category names to the circles
-    svg
-      .selectAll(".category")
-      .data(circleData)
-      .enter()
-      .append("text")
-      .attr("class", "category")
-      .attr("x", (d, i) => horizontalSpacing * (i + 1))
-      .attr("y", (d, i) => (i % 2 === 0 ? height / 3 : (height / 3) * 2))
-      .attr("text-anchor", "middle")
-      .attr("dominant-baseline", "central")
-      .text(d => d.category)
-      .attr("fill", "white");
-
     // Animation function
     function animate() {
       circles
@@ -109,37 +124,85 @@ export default function Test() {
     // Start the animation
     animate();
 
-    // Clean up the SVG container when the component is unmounted
+    // Play the PS3 UI music when the component mounts
+    const audio = audioRef.current;
+
+    // Add an event listener to the audio element to handle audio loading
+    audio.addEventListener("canplaythrough", handleAudioLoaded);
+
+    // Clean up the event listener and other resources when the component is unmounted
     return () => {
+      audio.removeEventListener("canplaythrough", handleAudioLoaded);
       svg.remove();
+      audio.pause();
+      audio.currentTime = 0;
+    };
+  }, [audioRef]);
+
+  useEffect(() => {
+    // If the audio has loaded and the user has interacted with the page,
+    // play the audio programmatically
+    if (audioLoaded) {
+      audioRef.current.play();
+    }
+  }, [audioLoaded]);
+
+  const handleAudioLoaded = () => {
+    // Audio has loaded, set the state to true
+    setAudioLoaded(true);
+  };
+
+  // Dynamic PS3-like background styles
+  const ps3BackgroundStyles = {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    zIndex: -1,
+    background: `linear-gradient(135deg, #0099ff, #ff33cc, #ff6633, #00ff00, #ff0000)`,
+    backgroundSize: "400% 400%",
+    animation: "gradientShift 15s ease infinite, colorPulse 2s alternate-reverse infinite",
+  };
+
+  // Append the animation styles to the head
+  useEffect(() => {
+    const style = document.createElement("style");
+    style.type = "text/css";
+    style.innerHTML = `
+      @keyframes gradientShift {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      @keyframes colorPulse {
+        0% {
+          filter: brightness(1.2) contrast(1.2);
+        }
+        100% {
+          filter: brightness(1) contrast(1);
+        }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Clean up the styles when the component is unmounted
+    return () => {
+      document.head.removeChild(style);
     };
   }, []);
 
-  // Set the background color of the page or container
-  const containerStyle = {
-    backgroundColor: "#f0f0f0", // Replace with your desired color
-    width: "100%",
-    height: "100vh",
-  };
-
-  // Set the style for the title
-  const titleStyle = {
-    textAlign: "center",
-    fontSize: "24px",
-    padding: "20px",
-  };
-
-  // Get the first sender from the email data
-  const firstSender = emailData.length > 0 ? emailData[0].From : "";
-  const secondSender = emailData.length > 1 ? emailData[1].From : "";
-
-
   return (
-    <div style={containerStyle}>
-      <h1 style={titleStyle}>Outlook Emails</h1>
+    <div>
       <div id="circle-container" ref={circleContainerRef}></div>
-      <p>Emails: {firstSender}</p>
-      <p>Emails: {secondSender}</p>
+      <audio ref={audioRef} src={ps3MenuMusic} loop />
+      <div style={ps3BackgroundStyles}></div>
     </div>
   );
 }
