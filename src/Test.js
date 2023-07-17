@@ -6,11 +6,9 @@ import emailData from "./emailData.json";
 
 export default function Test() {
   const circleContainerRef = useRef(null);
-  const audioRef = useRef(null);
-  const [audioLoaded, setAudioLoaded] = useState(false);
+  const [audioPlayed, setAudioPlayed] = useState(false);
 
   useEffect(() => {
-    // Define the circle data
     const circleData = [
       { category: "New", color: "black" },
       { category: "People", color: "black" },
@@ -19,21 +17,17 @@ export default function Test() {
       { category: "Flagged", color: "black" }
     ];
 
-    // Set the dimensions of the SVG container
     const width = window.innerWidth;
     const height = window.innerHeight;
 
-    // Create the SVG container within the circle-container div
     const svg = d3
       .select(circleContainerRef.current)
       .append("svg")
       .attr("width", width)
       .attr("height", height);
 
-    // Variable to store the tooltip element
     let tooltip = null;
 
-    // Create the circles
     const circles = svg
       .selectAll("circle")
       .data(circleData)
@@ -48,49 +42,52 @@ export default function Test() {
         d3.select(this).attr("fill", "yellow");
         const cx = d3.select(this).attr("cx");
         const cy = d3.select(this).attr("cy");
-      
-        // Get the email count for the current category
+
         const emailCount = emailData.filter(email => email.Category === d.category).length;
-      
-        // If the tooltip doesn't exist, create it
+
         if (!tooltip) {
           tooltip = svg
             .append("text")
             .attr("class", "tooltip")
             .attr("x", cx)
-            .attr("y", cy) // Place it at the center of the circle
+            .attr("y", cy)
             .attr("text-anchor", "middle")
-            .attr("dominant-baseline", "middle") // Center the text vertically
+            .attr("dominant-baseline", "middle")
             .attr("fill", "black");
         }
-      
-        // Update the tooltip content with email count only
+
         tooltip.text(emailCount);
       })
       .on("mouseout", function (event, d) {
         d3.select(this).attr("fill", d.color);
-      
-        // Remove the tooltip when the mouse moves out of the circle
+
         if (tooltip) {
           tooltip.remove();
           tooltip = null;
         }
+      })
+      .on("click", function (event, d) {
+        if (!audioPlayed) {
+          const audio = new Audio(ps3MenuMusic);
+          audio.loop = true;
+          audio.play();
+          setAudioPlayed(true);
+        }
       });
-      // Add category names to the circles
-svg
-.selectAll(".category")
-.data(circleData)
-.enter()
-.append("text")
-.attr("class", "category")
-.attr("x", (d, i) => (i + 1) * (width / (circleData.length + 1)))
-.attr("y", height / 2)
-.attr("text-anchor", "middle")
-.attr("dominant-baseline", "central")
-.text(d => d.category)
-.attr("fill", "white");
 
-    // Create a shadow filter definition
+    svg
+      .selectAll(".category")
+      .data(circleData)
+      .enter()
+      .append("text")
+      .attr("class", "category")
+      .attr("x", (d, i) => (i + 1) * (width / (circleData.length + 1)))
+      .attr("y", height / 2)
+      .attr("text-anchor", "middle")
+      .attr("dominant-baseline", "central")
+      .text(d => d.category)
+      .attr("fill", "white");
+
     const shadowFilter = svg
       .append("defs")
       .append("filter")
@@ -100,7 +97,6 @@ svg
       .attr("width", "200%")
       .attr("height", "200%");
 
-    // Add the shadow to the filter
     shadowFilter
       .append("feDropShadow")
       .attr("dx", 0)
@@ -109,50 +105,24 @@ svg
       .attr("flood-color", "#000")
       .attr("flood-opacity", 0.5);
 
-    // Animation function
     function animate() {
       circles
         .transition()
-        .duration(1000) // how long it takes to animate the circle growing
-        .attr("r", 49) // this will make the circle shrink
+        .duration(1000)
+        .attr("r", 49)
         .transition()
         .duration(1000)
-        .attr("r", 59) // this will make the circle grow
+        .attr("r", 59)
         .on("end", animate);
     }
 
-    // Start the animation
     animate();
 
-    // Play the PS3 UI music when the component mounts
-    const audio = audioRef.current;
-
-    // Add an event listener to the audio element to handle audio loading
-    audio.addEventListener("canplaythrough", handleAudioLoaded);
-
-    // Clean up the event listener and other resources when the component is unmounted
     return () => {
-      audio.removeEventListener("canplaythrough", handleAudioLoaded);
       svg.remove();
-      audio.pause();
-      audio.currentTime = 0;
     };
-  }, [audioRef]);
+  }, []);
 
-  useEffect(() => {
-    // If the audio has loaded and the user has interacted with the page,
-    // play the audio programmatically
-    if (audioLoaded) {
-      audioRef.current.play();
-    }
-  }, [audioLoaded]);
-
-  const handleAudioLoaded = () => {
-    // Audio has loaded, set the state to true
-    setAudioLoaded(true);
-  };
-
-  // Dynamic PS3-like background styles
   const ps3BackgroundStyles = {
     position: "fixed",
     top: 0,
@@ -165,7 +135,6 @@ svg
     animation: "gradientShift 15s ease infinite, colorPulse 2s alternate-reverse infinite",
   };
 
-  // Append the animation styles to the head
   useEffect(() => {
     const style = document.createElement("style");
     style.type = "text/css";
@@ -192,7 +161,6 @@ svg
     `;
     document.head.appendChild(style);
 
-    // Clean up the styles when the component is unmounted
     return () => {
       document.head.removeChild(style);
     };
@@ -201,7 +169,6 @@ svg
   return (
     <div>
       <div id="circle-container" ref={circleContainerRef}></div>
-      <audio ref={audioRef} src={ps3MenuMusic} loop />
       <div style={ps3BackgroundStyles}></div>
     </div>
   );
