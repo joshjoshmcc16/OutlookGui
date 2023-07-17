@@ -162,6 +162,30 @@ export default function Test() {
       .text((d) => d.category)
       .attr("fill", "white");
 
+    function throbbingAnimation() {
+      circles
+        .transition()
+        .duration(800)
+        .attr("r", (d) => {
+          const emailCount = emailData.filter(
+            (email) => email.Category === d.category
+          ).length;
+          const circleRadius = emailCount > 35 ? 50 + 35 * 2 + 10 : 50 + emailCount * 2 + 10;
+          return circleRadius;
+        })
+        .transition()
+        .duration(800)
+        .attr("r", (d) => {
+          const emailCount = emailData.filter(
+            (email) => email.Category === d.category
+          ).length;
+          const circleRadius = emailCount > 35 ? 50 + 35 * 2 : 50 + emailCount * 2;
+          return circleRadius;
+        })
+        .ease(easeBounceOut)
+        .on("end", throbbingAnimation);
+    }
+
     function animate() {
       circles
         .attr("r", 0)
@@ -196,12 +220,9 @@ export default function Test() {
           return circleRadius;
         })
         .ease(easeBounceOut)
-        .on("end", function () {
-          // Do not restart the animation
-          // Remove the end event listener to prevent unnecessary restarts
-          d3.select(this).on("end", null);
-        });
+        .on("end", throbbingAnimation);
     }
+
 
     // Start the animation
     animate();
