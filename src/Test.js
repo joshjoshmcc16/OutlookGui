@@ -15,11 +15,11 @@ export default function Test() {
 
   useEffect(() => {
     const circleData = [
-      { category: "New", color: "#FF6363" },
-      { category: "People", color: "#63C3FF" },
-      { category: "Severity", color: "#FFA663" },
-      { category: "Less Severity", color: "#FFD663" },
-      { category: "Flagged", color: "#63FFA1" },
+      { category: "New", color: "Black" },
+      { category: "People", color: "Black" },
+      { category: "Severity", color: "Black" },
+      { category: "Less Severity", color: "Black" },
+      { category: "Flagged", color: "Black" },
     ];
 
     const width = window.innerWidth;
@@ -306,16 +306,17 @@ function handleMouseOver(event, d) {
   };
 
   const ps3BackgroundStyles = {
-    position: "fixed",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "100%",
-    zIndex: -1,
-    background: `linear-gradient(135deg, #E6F3FF, #B3E0FF, #80C7FF, #4DADFF, #1A94FF)`,
-    backgroundSize: "400% 400%",
-    animation: "gradientShift 15s ease infinite, colorPulse 2s alternate-reverse infinite",
-  };
+  position: "fixed",
+  top: 0,
+  left: 0,
+  width: "100%",
+  height: "100%",
+  zIndex: -1,
+  background: `linear-gradient(135deg, #0099ff, #ff33cc, #ff6633, #00ff00, #ff0000)`,
+  backgroundSize: "400% 400%",
+  animation: "gradientShift 15s ease infinite, colorPulse 2s alternate-reverse infinite",
+};
+
 
   return (
     <div style={containerStyle}>
