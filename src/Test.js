@@ -4,6 +4,9 @@ import * as d3 from "d3";
 import emailData from "./emailData.json";
 import { easeBounceOut } from "d3-ease";
 import ps3MenuMusic from "./ps3MenuMusic.mp3";
+import hoverSoundEffect from "./hoverSoundEffect.mp3";
+// Import the Splunk logo image file
+import splunkLogo from "./SplunkLogo.png";
 
 export default function Test() {
   const circleContainerRef = useRef(null);
@@ -60,7 +63,6 @@ export default function Test() {
       .attr("fill", "white")
       .style("opacity", 0);
 
-    // Event handlers for circle interactions
     // Event handlers for circle interactions
 function handleMouseOver(event, d) {
   d3.select(this).attr("fill", "yellow");
@@ -140,7 +142,15 @@ function handleMouseOver(event, d) {
         // Turn on background music when a circle is clicked
         if (!audioPlayed) {
           const audio = new Audio(ps3MenuMusic);
+          audio.volume = 0.02; // Set the volume for hover sound effect (0.6 = 60%)
           audio.loop = true;
+          audio.play();
+          setAudioPlayed(true);
+        }
+        // Play the audio when a circle is clicked
+        if (!audioPlayed) {
+          const audio = new Audio(hoverSoundEffect);
+          audio.loop = false;
           audio.play();
           setAudioPlayed(true);
         }
@@ -300,10 +310,14 @@ function handleMouseOver(event, d) {
 
   const titleStyle = {
     textAlign: "center",
-    fontSize: "24px",
-    padding: "20px",
+    fontSize: "36px", // Reduced font size for a smaller title box
     fontFamily: "'PT Serif', sans-serif",
+    color: "#ffffff", // White text color
+    borderRadius: "5px", // Slightly rounded corners
   };
+  
+  
+  
 
   const ps3BackgroundStyles = {
   position: "fixed",
@@ -320,6 +334,7 @@ function handleMouseOver(event, d) {
 
   return (
     <div style={containerStyle}>
+    <img src={splunkLogo} alt="Splunk Logo" style={{ width: "200px", margin: "20px auto", display: "block" }} />
       <h1 style={titleStyle}>Outlook Emails</h1>
       <div id="circle-container" ref={circleContainerRef}></div>
       {animationFinished && selectedEmails.length > 0 && (
